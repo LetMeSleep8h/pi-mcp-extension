@@ -978,11 +978,11 @@ export function runRelease(options: ReleaseOptions): ReleaseOutcome {
       // WHY: the version is computed once; a commit that lands on `main` mid-release
       // is picked up by the next run's scan instead of recomputing the bump here.
       const mergeSha = landReleaseOnMain(git, options.pullRequests, {
-      version: target,
-      date,
-      attempts: maxPushAttempts,
-      log,
-    });
+        version: target,
+        date,
+        attempts: maxPushAttempts,
+        log,
+      });
       pushTagWithRetry(git, target, mergeSha, maxPushAttempts, log);
 
       // Phase 3b — the commit and its tag are on `main`; publishing now keeps npm and
